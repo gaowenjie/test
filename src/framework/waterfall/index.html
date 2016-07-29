@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>瀑布流</title>
+    <link rel="stylesheet" href="css/base.css" />
+</head>
+<body>
+<style type="text/css">
+.wf-main{
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+}
+.wf-main .wf-cld{
+    position: absolute;
+    margin-bottom: 10px;
+    padding:5px 8px;
+    width: 48%;
+    margin:0 1% 10px 1%;
+    left: -9999px;
+    top: -9999px;
+    line-height:18px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    background-color: #ccc;
+    overflow: hidden;
+}
+/*.wf-cld .inner{
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    margin-bottom: 5px;
+    width: 73px;
+    overflow: hidden;
+    border: 1px solid #f00;
+    border-radius: 3px;
+}
+.wf-cld .title{
+    margin: 0 0 5px;
+    padding: 5px;
+    width: 63px;
+    color: #f00;
+    font-size: 14px;
+}*/
+</style>
+<div class="wf-main" id="wf-main">
+    <div class="wf-cld"><h2 style="color:#f50">1、瀑布流</h2></div>
+    <div class="wf-cld">2<br>2</div>
+    <div class="wf-cld">3<br>4<br>4</div>
+    <div class="wf-cld">4<br>4<br>4<br>4</div>
+    <div class="wf-cld">5<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">6<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">7<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">8<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">9<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">10<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">18<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">19<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">20<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">22<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">23<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">24<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">11<br>2<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">12<br>2<br>2<br>3<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">13<br>4<br>4<br>3<br>3<br>1<br>2<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">14<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">15<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">16<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+    <div class="wf-cld">17<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4<br>4</div>
+</div>
+<script type="text/javascript">
+function Waterfall(param)
+{
+    this.id = typeof param.container == 'string' ? document.getElementById(param.container) : param.container;
+    this.colWidth = param.colWidth;
+    this.colCount = param.colCount || 2;
+    this.cls = param.cls && param.cls != '' ? param.cls : 'wf-cld';
+    this.init();
+}
+Waterfall.prototype = {
+     //通过类名获取元素。
+    getElesByClass:function(strClass,contextEle){
+        function getEle(strClass,eles){
+            var ary=[];
+            var reg=new RegExp('\\b'+strClass+'\\b');
+            for(var i=0;i<eles.length;i++){         
+                    if(reg.test(eles[i].className)){
+                        ary.push(eles[i]);          
+                    }
+            }
+            return ary;
+        }
+        contextEle=contextEle||document;
+        if(contextEle.nodeType!=1&&contextEle.nodeType!=9){contextEle=document;}
+        if(contextEle.getElementsByClassName){
+            return contextEle.getElementsByClassName(strClass);
+        }else{
+            var classArray=strClass.split(' ');
+            var eles=contextEle.getElementsByTagName('*');
+            for(var i=0;i<classArray.length;i++){   
+                    if(classArray[i].replace(/\s/g,'').length>0){
+                        eles=getEle(classArray[i],eles);
+                    }
+                }
+            return eles;
+        }
+    },
+    //最高一列的高度。
+    maxArr:function(arr){
+        var len = arr.length,temp = arr[0];
+        for(var ii= 1; ii < len; ii++){
+            if(temp < arr[ii]){
+                temp = arr[ii];
+            }
+        }
+        return temp;
+    },
+    getMar:function(node){
+        var dis = 0;
+        if(node.currentStyle){
+            dis = parseInt(node.currentStyle.marginBottom);
+        }else if(document.defaultView){
+            dis = parseInt(document.defaultView.getComputedStyle(node,null).marginBottom);
+        }
+        return dis;
+    },
+    //取得并返回当前最短的列的索引。
+    getMinCol:function(arr){
+        var ca = arr,cl = ca.length,temp = ca[0],minc = 0;
+        for(var ci = 0; ci < cl; ci++){
+            if(temp > ca[ci]){
+                temp = ca[ci];
+                minc = ci;
+            }
+        }
+        return minc;
+    },
+    //初始化瀑布流。
+    init:function(){
+        var _this = this;
+        var col = [],//列高
+            iArr = [];//索引
+        var nodes = _this.getElesByClass(_this.cls,_this.id),len = nodes.length;
+        //每一列的高度。
+        for(var i = 0; i < _this.colCount; i++){
+            col[i] = 0;
+        }
+        for(var i = 0; i < len; i++){
+            nodes[i].h = nodes[i].offsetHeight + _this.getMar(nodes[i]);
+            iArr[i] = i;
+        }
+         
+        for(var i = 0; i < len; i++){
+            var ming = _this.getMinCol(col);
+             console.log(ming * _this.colWidth);
+            nodes[i].style.left = ming * _this.colWidth*100+"%";
+            nodes[i].style.top = col[ming] + "px";
+            col[ming] += nodes[i].h;
+        }
+         console.log(_this.id.id);
+        _this.id.style.height = _this.maxArr(col) + "px";
+    },
+    //添加新的数据。
+    addNewCol:function(data)
+    {
+
+    }
+};
+new Waterfall({
+    "container":"wf-main",
+    "colWidth":0.5,
+    "colCount":2
+});
+</script>
+</body>
+</html>

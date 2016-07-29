@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="壹果Yiigoo，致力创造对婴童更呵护、更舒服、更安心安全的产品，重新定义“互联网+”专业婴童品牌。">
+  <meta name="keywords" content="壹果,yiigoo,壹果企画,壹果企画（北京）科技有限公司,母婴,婴童,爬服">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no"/>
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <link rel="stylesheet" type="text/css" href="../css/base.css">
+  <link rel="stylesheet" type="text/css" href="../css/yiigoo.css">
+  <link rel="stylesheet" type="text/css" href="../css/swiper.css">
+  <script src="../lib/swiper.min.js" type="text/javascript"></script>
+  <title>我的返利订单</title>
+  <style type="text/css">
+    .yg-login-layer{background: #000;opacity: 0.4;}
+    .yg-login-hint{z-index: 999; width: 11.75rem;margin-left:-5.875rem; background: none; opacity:1;}
+  </style>
+</head>
+<body style="height:100%;">
+  <!-- 推广方式-弹层start -->
+  <article class="dis-share-layer" style="display:none" id="js_disLayer">
+    <a class="layer-close" href="javascript:void(0);" id="js_disLayer_close"><img alt="" src="../images/close.png"></a>
+    <div class="dis-share">
+      <dl class="dis-share-lst flex">
+        <dt class="tit">
+          <h3>方法1</h3>
+        </dt>
+        <dd class="info">
+          <h3>微信直接分享</h3>
+          <p class="font">点击微信右上角<a href="javascript:void(0);"><img src="../images/dian.png" alt="" class="dian"></a><br/>将网站分享给好友进行推广</p>
+        </dd>
+      </dl>
+      <dl class="dis-share-lst flex">
+        <dt class="tit">
+          <h3>方法2</h3>
+        </dt>
+        <dd class="info">
+          <h3>复制以下链接, 转发推广<a class="ctrl-c" href="javascript:void(0);"  id="d_clip_button" data-clipboard-target="shareHref">复制链接</a></h3>
+          <p class="mes">好物推荐: Yiigoo2016夏季 —Yiigoo官方旗舰店<a href="javascript:void(0);" id="shareHref"></a></p>
+        </dd>
+      </dl>
+      <dl class="dis-share-lst flex">
+        <dt class="tit">
+          <h3>方法3</h3>
+        </dt>
+        <dd class="info">
+          <h3>点击右侧二维码推广</h3>
+          <p class="font pt20">点击放大右侧二维码, 请好友扫描</p>
+          <aside class="code"  id="content"><img src="../images/two-dimension.jpg" alt="" id="js_code"></aside>
+
+        </dd>
+      </dl>
+      <dl class="dis-share-lst flex">
+        <dt class="tit">
+          <h3>方法4</h3>
+        </dt>
+        <dd class="info">
+          <h3>到网站, 通过分享功能推广</h3>
+          <p class="font">点击分享图标<a href="javascript:void(0);"><i class="dian iconfont ">&#xe60e;</i></a></br>将商品分享给好友进行推广</p>
+        </dd>
+      </dl>
+      <p class="bot"><a href="javascript:void(0);" class="c9">了解更多信息...</a></p>
+    </div>
+  </article>
+  <!-- 推广方式-弹层END -->
+
+  <!-- 提现-弹层start -->
+  <article class="shai-pic-layer" style="display:none" id="cash_layer">
+    <a class="layer-close" href="javascript:void(0);" id="cash_close"><img alt="" src="../images/close.png"></a>
+    <div class="input-box">
+      <p class="input-tit">请输入提现金额：</p>
+      <div class="input-num flex">
+        <label>￥</label>
+        <input type="tel" class="inputnum" placeholder="0.00" id="js_inputnum" />
+      </div>
+      <div class="input-but">
+        <a class="input-submit ok" href="javascript:void(0);" id="qrBtn">确认提现</a>
+      </div>
+    </div>
+  </article>
+  <div class="clicklayer"></div>
+  <!-- 提现-弹层end -->
+  <div id="yg-doc">
+    <!--<header id="yg-hd">top</header>-->
+    <div id="yg-bd">
+      <article class="discount" id="js_discount">
+        <nav class="dis-id mb30">
+          <span>您的推广ID：</span><span id="sourceId"></span>
+        </nav>
+        <div class="dis-income mb30">
+          <p class="tit">预计收入</p>
+          <a href="javascript:void(0);" class="money" id="revenuesBtn">￥<em id="revenues"><!--[$preincomePrice]--></em></a>
+          <p class="info">预计收入是对您收入的估计值, 会随着订单状态变化, 仅供参考</p>
+        </div>
+        <ul class="dis-order mb30">
+          <li>
+            <a href="javascript:void(0);" id="orderPriceBtn">
+              <p class="dis-sum"><i>￥</i><span  id="orderPrice"><!--[$orderPrice]--></span></p>
+              <p class="dis-t">订单金额</p>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" id="orderBtn">
+              <p class="dis-sum" id="orderCount"><!--[$orderCount]--></p>
+              <p class="dis-t">订单量</p>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <p class="dis-sum"><i>￥</i><!--[$balancePrice]--></p>
+              <p class="dis-t">可提现金额</p>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <p class="dis-sum"><i>￥</i>0.00</p>
+              <p class="dis-t">已提现金额</p>
+            </a>
+          </li>
+        </ul>
+        <div class="dis-oper mb30">
+          <p class="tit">我要提现</p>
+          <ul class="dis-oper-lst flex">
+            <li>
+              <a href="javascript:void(0);"  id="cashLayerBtn">
+                <em class="icon-1"></em>
+                <p>申请提现</p>
+              </a>
+            </li>
+            <li id="bankBtn">
+              <a href="javascript:void(0);">
+                <em class="icon-2"></em>
+                <p>绑定银行卡</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="dis-oper bo mb30">
+          <p class="tit">我要推广</p>
+          <ul class="dis-oper-lst flex">
+            <li id="promotionBtn">
+              <a href="javascript:void(0);">
+                <em class="icon-3"></em>
+                <p>推广方式</p>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">
+                <em class="icon-4"></em>
+                <p>常见问题</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <footer id="yg-fd">
+      <div class="fd-bar">
+        <nav class="fd-nav">
+          <a href="javascript:void(0);" id="js_bottombar_index">
+            <i class="iconfont">&#xe654;</i>
+            <p>首页</p>
+          </a>
+          <a href="javascript:void(0);" id="js_bottombar_list">
+            <i class="iconfont">&#xe639;</i>
+            <p>好物</p>
+          </a>
+          <a href="javascript:void(0);" id="js_bottombar_mall">
+            <i class="iconfont">&#xe620;</i>
+            <p>壹果园</p>
+          </a>
+          <a href="javascript:void(0);" id="js_bottombar_cart">
+            <i class="iconfont">&#xe64c;</i>
+            <p>购物车</p>
+          </a>
+          <a href="javascript:void(0);" id="js_bottombar_user" class="active">
+            <i class="iconfont">&#xe656;</i>
+            <p>我的</p>
+          </a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</body>
+<script type="text/javascript" src="../lib/jquery-2.1.1.min.js" ></script>
+<script type="text/javascript" src="../lib/fxtpl.min.js"></script>
+<script type="text/javascript" src = "../js/common.js"></script>
+<script type="text/javascript" src="../js/discount/index.js"></script>
+<script type="text/javascript" src="../js/discount/ZeroClipboard.js"></script>
+<script type="text/javascript">
+// 定义一个新的复制对象
+var clip = new ZeroClipboard( document.getElementById("d_clip_button"), {
+  moviePath: "ZeroClipboard.swf"
+} );
+
+// 复制内容到剪贴板成功后的操作
+clip.on( 'complete', function(client, args) {
+   alert("复制成功，复制内容为："+ args.text);
+   alert(d_clip_button)
+} );
+
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function(e) {
+                document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth*20/375 + 'px';
+    }, false);
+</script>
+</html>

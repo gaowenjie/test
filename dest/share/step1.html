@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="壹果yiigoo个人晒单，有机产品为小宝宝提供更健康舒适的生活。">
+	<meta name="keywords" content="壹果，yiigoo，壹果企画，壹果企画（北京）科技有限公司，晒单，有机，无甲醛，婴幼儿用品">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/yiigoo.css">
+	<title>发布晒单（选照片）</title>
+</head>
+<body style="height:100%;background:#fff;">
+	<!--加载资源-->
+	<div class="lazy_tip" id="lazy_tip">
+		<span>1%</span><br>
+		加载中......
+	</div>
+	<div class="lazy_cover"></div>
+	<div class="resource_lazy hide"></div>
+	<div class="shaipic">
+		<div class="shaipic-edit" id="clipArea">
+			<i class="uptit">上传图片</i>
+			<span class="pic-up" id="upload2"></span>
+		</div>
+		<div class="shaipic-edit-items">
+			<a href="javascript:void(0);" class="one" id = "type1"></a>
+			<a href="javascript:void(0);" class="two" id = "type2"></a>
+			<a href="javascript:void(0);" class="but" id = "clipBtn">确 定</a>
+		</div>
+		<input class="pic-up" type="file" name="pic" accept="image/*" id="file" style = "display:none;">
+	</div>
+	<img src="" title="upload.jpg" fileName="" id="hit" style="display:none;z-index: 9" style = "display:none;">
+	<div class="shaipic-up bbb">
+		<p class="shaipic-none" id="js_shaidanImg_des">
+			最多上传3张图片<br/>并选择1张图片添加标记
+		</p>
+		<div class="shaipic-up-pic" id="js_shaidanImg_con" style="display:none;">
+			<p class="tit">请选择一张图片加标记：</p>
+			<ul class="shaipic-piclst clearfix" id="js_shaidanImg"></ul>
+		</div>
+	</div>
+	<footer id="yg-fd" style="display:none;">
+		<article class="shai-bar">
+			<p class="sbut"><a href="javascript:void(0);" id="js_nextstep">下一步</a></p>
+		</article>
+	</footer>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function(e) {
+                document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth*20/375 + 'px';
+    }, false);
+</script>
+<script type="text/javascript" src="../lib/jquery-2.1.1.min.js" ></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../lib/sonic.js"></script>
+<script type="text/javascript" src="../lib/comm.js"></script>
+<script type="text/javascript" src="../lib/hammer.js"></script>
+<script type="text/javascript" src="../lib/iscroll-zoom.js"></script>
+<script type="text/javascript" src="../lib/jquery.photoClip.js?v=1"></script>
+<script type="text/javascript" src="../js/share/step1.js"></script>
+</html>

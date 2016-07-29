@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="壹果Yiigoo，致力创造对婴童更呵护、更舒服、更安心安全的产品，重新定义“互联网+”专业婴童品牌。">
+    <meta name="keywords" content="壹果,yiigoo,壹果企画,壹果企画（北京）科技有限公司,母婴,婴童,爬服">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/yiigoo.css">
+	<link rel="stylesheet" type="text/css" href="../css/swiper.css">
+	<script src="../lib/swiper.min.js" type="text/javascript"></script>
+	<title>我的订单</title>
+</head>
+<body>
+<div id="yg-doc">
+	<div class="orderCenter">
+		<ul class="orderNav flex">
+			<li><a href="orderlist.html" class="active">全部订单</a></li>
+			<li><a href="orderlist.html?orderStatus=WaitingPay">待付款</a></li>
+			<li><a href="orderlist.html?orderStatus=WaitingSend">待发货</a></li>
+			<li><a href="orderlist.html?orderStatus=WaitingSign">配送中</a></li>
+			<li><a href="orderlist.html?orderStatus=TradeSuccess">交易成功</a></li>
+		</ul>
+		<article class="orderbox">
+			<div id="js_orderlist">
+				
+			</div>
+		</article>
+	</div>
+</div>
+<div id="js_orderlist_module" style="display:none;">
+	<!--[each $extra]-->
+	<div class="orderlst">
+		<h3 class="orderlst-num flex jbw">
+			<p><a href="orderdetail.html?orderId=<!--[$item.orderId]-->">订单号：<em><!--[$item.orderId]--></em></a></p>
+			<!--[if $item.orderStatus == 'WaitingPay']-->
+            <span class="brown">待付款</span> 
+            <!--[elseif  $item.orderStatus == 'WaitingSend']-->
+            <span class="brown">待发货</span>
+            <!--[elseif  $item.orderStatus == 'WaitingSign']-->
+            <span class="brown">配送中</span>
+            <!--[elseif  $item.orderStatus == 'TradeClosed']-->
+            <span class="brown">已取消</span>
+            <!--[elseif  $item.orderStatus == 'TradeSuccess']-->
+            <span class="brown">交易成功</span>
+            <!--[/if]-->
+		</h3>
+		<!--[if $item.imagesLength == 1]-->
+		<a href="orderdetail.html?orderId=<!--[$item.orderId]-->">
+			<dl class="orderlst-img"> 
+				<dt><img src="../images/200.jpg" alt="" realSrc="<!--[$item.images[0].imageUrl]-->" class="lazy"></dt>
+				<dd><!--[$item.images[0].productName]--></dd>
+			</dl>
+		</a>
+		<!--[else]-->
+		<div class="swiper-container swiper-container-horizontal orderlst-img-lst">
+			<ul class="swiper-wrapper">
+				<!--[each $item.images as $imgList $i]-->
+				<li class="swiper-slide"><a href="orderdetail.html?orderId=<!--[$item.orderId]-->">
+					<img src="../images/200.jpg" alt="" realSrc="<!--[$imgList.imageUrl]-->" class="lazy" ></a>
+				</li>
+				<!--[/each]-->
+			</ul>
+		</div>
+		<!--[/if]-->
+		<div class="orderlst-pay jbw">
+			<p class="brown">合计：<em>￥<!--[$item.totalPrice]--></em></p>
+			<!--[if $item.orderStatus == 'WaitingPay']-->
+            <a href="../order/submitSuccess.html?state=<!--[$item.orderId]-->-<!--[$item.totalPrice]-->" class="smallbut">支 付</a>
+            <!--[elseif  $item.orderStatus == 'TradeSuccess']-->
+            <a href="notcomment.html?orderId=<!--[$item.orderId]-->" class="smallbut">评 价</a>
+            <!--[/if]-->
+		</div>
+	</div>
+	<!--[/each]-->
+</div>
+</body>
+<script>
+	document.addEventListener('DOMContentLoaded', function(e) {
+                document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth*20/375 + 'px';
+		}, false);
+	
+</script>
+<script type="text/javascript" src="../lib/jquery-2.1.1.min.js" ></script>
+<script type="text/javascript" src="../lib/swiper.min.js" ></script>
+<script type="text/javascript" src="../lib/fxtpl.min.js" ></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/user/orderlist.js"></script>
+</html>

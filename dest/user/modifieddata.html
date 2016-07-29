@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="壹果Yiigoo，致力创造对婴童更呵护、更舒服、更安心安全的产品，重新定义“互联网+”专业婴童品牌。">
+    <meta name="keywords" content="壹果,yiigoo,壹果企画,壹果企画（北京）科技有限公司,母婴,婴童,爬服">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/yiigoo.css">
+	<link rel="stylesheet" type="text/css" href="../css/swiper.css">
+	<link rel="stylesheet" type="text/css" href="../css/common.css" />
+	<title>修改个人资料</title>
+	<style type="text/css">
+		.fileinput{opacity: 0; filter:alpha(opacity=0); position: absolute;top: 16px; right: 15px;}
+		.babyage{ border: 0; text-align: right;}
+		.imgs{position: relative;}
+	</style>
+</head>
+<body style="height:100%;">
+	<div id="yg-doc">
+		<div id="yg-bd">
+			<div class="userCenter" id="js_userCenter">
+				<div class="addinput flex jbw imgs">
+					<label class="on">头像</label>
+					<input type="file"  id="file"  class="user_img addinput-inner fileinput" onchange="previewImage(this)">
+					<p class="user_img addinput-inner"><img src="<!--[$headImageUrl]-->" id="js_img" fileName="" name=""></p>
+					<span class="iconfont go"></span>
+
+				</div>
+				<div class="addinput flex jbw">
+					<label class="on">用户名</label>
+					<p class="addinput-inner not"><!--[$userName]--></p>
+				</div>
+				<div class="addinput flex jbw">
+					<label>会员级别</label>
+					<p class="addinput-inner not">
+						<span class="user-vip"><i><!--[$level]--></i></span>
+					</p>
+				</div>
+				<div class="addinput flex jbw" id="js_nickname">
+					<label class="on">昵称</label>
+					<p class="addinput-inner" id="nName"><!--[$nickName]--></p>
+					<span class="iconfont go"></span>
+				</div>
+				<div class="addinput flex jbw" id="js_sex">
+					<label class="on">宝宝性别</label>
+					<p class="addinput-inner" id="uSex"><!--[if $babyGender == '1']-->女宝<!--[else]-->男宝<!--[/if]--></p>
+					<span class="iconfont go"></span>
+				</div>
+				<div class="addinput flex jbw demo">
+					<label class="on">宝宝年龄</label>
+					<div class="lie addinput-inner"><input id="beginTime" class="kbtn babyage" value="<!--[$bBirthday]-->"/></div>
+					<span class="iconfont go"></span>
+				</div>
+				<!--日历弹层DIV-->
+				<div id="datePlugin" style="top:0"></div>
+
+			</div>
+	    </div>
+	    <footer id="yg-fd">
+			<nav class="bigbut">
+				<a href="javascript:void(0);" class="addbut" id="exitBtn">退 出</a>
+			</nav>
+		</footer>
+	</div>
+</body>
+<script type="text/javascript" src="../lib/swiper.min.js" ></script>
+<script type="text/javascript" src="../lib/jquery-2.1.1.min.js" ></script>
+<script type="text/javascript" src="../lib/fxtpl.min.js"></script>
+<script type="text/javascript" src = "../js/common.js"></script>
+<script type="text/javascript" src="../js/user/date.js" ></script>
+<script type="text/javascript" src="../js/user/iscroll.js" ></script>
+<script type="text/javascript" src="../js/user/user_modifieddata.js"></script>
+
+
+<script>
+	document.addEventListener('DOMContentLoaded', function(e) {
+                document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth*20/375 + 'px';
+		}, false);
+</script>
+</html>

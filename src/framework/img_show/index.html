@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <title>load Demo</title>
+        <link rel="stylesheet" href="css/base.css">
+        <script src="js/zepto.min.js"></script>
+        <style type="text/css">
+            .container
+            {
+                width:96%;margin:0 auto;
+            }
+            .container div.img_container
+            {
+                width:100%;position: relative;
+            }
+            .container div.img_container a.img_point
+            {
+               width:7px;height:7px;position: absolute;background:red;
+               border-radius: 50%;
+            }
+            a.img_point span
+            {
+                position: absolute;border:1px solid red;width:5px;height:5px;border-radius: 50%;top:0px;left:0px;
+               /*  transition:All 0.4s linear;
+
+                -webkit-transition:All 0.4s linear;
+
+                -moz-transition:All 0.4s linear;
+
+                -o-transition:All 0.4s linear;*/
+
+                animation:img_animation 1s linear 0s infinite;
+                -webkit-animation:img_animation 1s linear 0s infinite;
+                -moz-animation:img_animation 1s linear 0s infinite;
+                -o-animation:img_animation 1s linear 0s infinite;
+
+               
+            }
+            /*a.img_point span:hover
+            {
+                 transform:scale(2);
+                 -webkit-transform:scale(2);
+                -moz-transform:scale(2);
+                -o-transform:scale(2);
+                -ms-transform:scale(2);
+            }*/
+            .container div.img_container img
+            {
+                width:100%;height:auto;
+            }
+            @-webkit-keyframes img_animation
+            {
+                0%{
+                   /* border:2px solid red;*/
+                    -webkit-transform:scale(1);
+                }
+                100%{
+                   /* border:0.5px solid red;*/
+                    -webkit-transform:scale(3);
+                }
+            }
+            @-moz-keyframes img_animation
+            {
+                0%{
+                   /* border:2px solid red;*/
+                    -moz-transform:scale(1);
+                }
+                100%{
+                   /* border:0.5px solid red;*/
+                    -moz-transform:scale(3);
+                }
+            }
+            @-o-keyframes img_animation
+            {
+                0%{
+                   /* border:2px solid red;*/
+                    -o-transform:scale(1);
+                }
+                100%{
+                   /* border:0.5px solid red;*/
+                    -o-transform:scale(3);
+                }
+            }
+            @keyframes img_animation
+            {
+                0%{
+                   /* border:2px solid red;*/
+                    transform:scale(1);
+                }
+                100%{
+                   /* border:0.5px solid red;*/
+                    transform:scale(3);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+           <!--  <div class="img_container">
+                <img src="images/bg1.jpg">
+                <a href="" class="img_point" style="top:30%;left:20%;">
+                    <span></span>
+                </a>
+            </div> -->
+        </div>
+    </body>
+    <script type="text/javascript">
+        //模拟后台数据
+        var data = 
+        {
+            page:1,
+            goods_msg:[
+                {
+                    imgurl:"images/bg6.jpg",
+                    des:"图片的描述。",
+                    point_show:
+                    [
+                        {
+                            linkUrl:"",
+                            xDir:"20%",
+                            yDir:"30%"
+                        },
+                        {
+                            linkUrl:"",
+                            xDir:"60%",
+                            yDir:"60%"
+                        }
+                    ]
+                },
+                {
+                    imgurl:"images/bg6.jpg",
+                    des:"图片的描述。",
+                    point_show:
+                    [
+                        {
+                            linkUrl:"",
+                            xDir:"20%",
+                            yDir:"30%"
+                        },
+                        {
+                            linkUrl:"",
+                            xDir:"60%",
+                            yDir:"60%"
+                        }
+                    ]
+                }
+            ]
+        };
+         var str = "";
+        for(var i=0;i<data.goods_msg.length;i++)
+        {
+            str+='<div class="img_container">';
+                str+='<img xSrc="images/yiigoo.png" src="'+data.goods_msg[i].imgurl+'">';
+                for(var j=0;j<data.goods_msg[i].point_show.length;j++)
+                {
+                    str+='<a href="'+data.goods_msg[i].point_show[j].linkUrl+'" class="img_point" style="top:'+data.goods_msg[i].point_show[j].xDir+';left:'+data.goods_msg[i].point_show[j].yDir+';">';
+                        str+='<span></span>';
+                    str+='</a>';
+                }
+                
+            str+='</div>';
+        }
+        $(".container").append(str);
+    </script>
+</html>

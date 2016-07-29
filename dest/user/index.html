@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="壹果Yiigoo，致力创造对婴童更呵护、更舒服、更安心安全的产品，重新定义“互联网+”专业婴童品牌。">
+    <meta name="keywords" content="壹果,yiigoo,壹果企画,壹果企画（北京）科技有限公司,母婴,婴童,爬服">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/yiigoo.css">
+	<title >个人中心</title>
+</head>
+<body style="height:100%;">
+	<div id="yg-doc">
+		<div class="userCenter">
+			<div class="usertop" id="js_userMsg">
+				<a href="modifieddata.html">
+					<div class="usertopHead">
+						<span class="user-vip bar"><i><!--[$level]--></i></span>
+						<p class="userbox">
+							<img src="<!--[$headImageUrl]-->" alt="">
+						</p>
+					</div>
+				
+					<p class="name"><!--[$nickName]--></p>
+					<span class="c9">
+						<!--[if $babyGender == '0']-->
+			            男宝
+			            <!--[elseif $babyGender == '1']-->
+			           	女宝
+			            <!--[/if]-->
+						<em class="pl20"><!--[$bBirthday]--></em>
+					</span>
+				</a>
+			</div>
+			<div class="userorder">
+				<h3 class="userorder-tit">
+					<a href="orderlist.html" class="flex jbw">
+						<em>全部订单</em>
+						<i class="goback iconfont"></i>
+					</a>
+				</h3>
+				<ul class="userorder-state flex" id = "js_order">
+					<li>
+						<a href="orderlist.html?orderStatus=WaitingPay">
+							<span>
+								<!--[if $WaitingPay != '0']-->
+					           	<i><!--[$WaitingPay]--></i>
+					            <!--[/if]-->
+								<img src="../images/center_1.png" alt=""></span>
+							<em>待付款</em>
+						</a>
+					</li>
+					<li>
+						<a href="orderlist.html?orderStatus=WaitingSend">
+							<span>
+								<!--[if $WaitingSend != '0']-->
+					           	<i><!--[$WaitingSend]--></i>
+					            <!--[/if]-->
+								<img src="../images/center_2.png" alt=""></span>
+							<em>待发货</em>
+						</a>
+					</li>
+					<li>
+						<a href="orderlist.html?orderStatus=WaitingSign">
+							<span>
+								<!--[if $WaitingSign != '0']-->
+					           	<i><!--[$WaitingSign]--></i>
+					            <!--[/if]-->
+								<img src="../images/center_3.png" alt=""></span>
+							<em>配送中</em>
+						</a>
+					</li>
+					<li>
+						<a href="orderlist.html?orderStatus=TradeSuccess">
+							<span><img src="../images/center_4.png" alt=""></span>
+							<em>交易成功</em>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<ul class="useritems clearfix">
+				<li>
+					<a href="javascript:void(0);" id = "js_myshare">
+						<span><img src="../images/center_5.png" alt=""></span>
+						<em>我的晒单</em>
+					</a>
+				</li>
+				<li>
+					<a href="coupon.html">
+						<span><img src="../images/center_6.png" alt=""></span>
+						<em>优惠券</em>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" id="tiBtn">
+						<span><i id="js_ticheng" style="display:none;"></i><img src="../images/center_7.png" alt=""></span>
+						<em>返利</em>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<span><img src="../images/center_8.png" alt=""></span>
+						<em>邀请有礼</em>
+					</a>
+				</li>
+				<li>
+					<a href="message.html">
+						<span><i id="js_message" style="display:none;"></i><img src="../images/center_9.png" alt=""></span>
+						<em>消息</em>
+					</a>
+				</li>
+				<li>
+					<a href="address.html">
+						<span><img src="../images/center_10.png" alt=""></span>
+						<em>收货地址</em>
+					</a>
+				</li>
+			</ul>
+	    </div>
+	    <footer id="yg-fd">
+	      <div class="fd-bar">
+	        <nav class="fd-nav">
+	          <a href="javascript:void(0);" id="js_bottombar_index">
+	            <i class="iconfont">&#xe654;</i>
+	            <p>首页</p>
+	          </a>
+	          <a href="javascript:void(0);" id="js_bottombar_list">
+	            <i class="iconfont">&#xe639;</i>
+	            <p>好物</p>
+	          </a>
+	          <a href="javascript:void(0);" id="js_bottombar_mall">
+	            <i class="iconfont">&#xe620;</i>
+	            <p>壹果园</p>
+	          </a>
+	          <a href="javascript:void(0);" id="js_bottombar_cart">
+	            <i class="iconfont">&#xe64c;</i>
+	            <p>购物车</p>
+	          </a>
+	          <a href="javascript:void(0);" id="js_bottombar_user" class="active">
+	            <i class="iconfont">&#xe656;</i>
+	            <p>我的</p>
+	          </a>
+	        </nav>
+	      </div>
+	    </footer>
+	</div>
+</body>
+<script>
+	document.addEventListener('DOMContentLoaded', function(e) {
+                document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth*20/375 + 'px';
+		}, false);
+</script>
+<script type="text/javascript" src="../lib/jquery-2.1.1.min.js" ></script>
+<script type="text/javascript" src="../lib/fxtpl.min.js" ></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/user/index.js"></script>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="壹果Yiigoo，致力创造对婴童更呵护、更舒服、更安心安全的产品，重新定义“互联网+”专业婴童品牌。">
+    <meta name="keywords" content="壹果,yiigoo,壹果企画,壹果企画（北京）科技有限公司,母婴,婴童,爬服">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/yiigoo.css">
+	<link rel="stylesheet" type="text/css" href="../css/swiper.css">
+	<script src="../lib/swiper.min.js" type="text/javascript"></script>
+	<title>订单详情</title>	
+</head>
+<body>
+	<div id="yg-doc">
+		<div class="yg-checkorder" id="js_orderdetail">
+			<article class="lst-module mb30">
+				<h3 class="orderlst-num flex jbw">
+					<p><em>订单号：</em><em class="tel"><!--[$orderId]--></em></p>
+					<!--[if $orderStatus == 'WaitingPay']-->
+		            <span class="brown">待付款</span> 
+		            <!--[elseif  $orderStatus == 'WaitingSend']-->
+		            <span class="brown">待发货</span>
+		            <!--[elseif  $orderStatus == 'WaitingSign']-->
+		            <span class="brown">配送中</span>
+		            <!--[elseif  $orderStatus == 'TradeClosed']-->
+		            <span class="brown">已取消</span>
+		            <!--[elseif  $orderStatus == 'TradeSuccess']-->
+		            <span class="brown">交易成功</span>
+		            <!--[/if]-->
+				</h3>
+				<h3 class="orderlst-num">
+					<p><em><!--[$receiver]--></em><em class="tel"><!--[$telPhone]--></em></p>
+					<p><!--[$provinceName]--><!--[$cityName]--><!--[$areaName]--><!--[$address]--></p>
+				</h3>
+				<h3 class="orderlst-num" id="js_express">
+					<p><em><!--[$expressCompany]--></em><em class="tel">单号: <i><!--[$expressCode]--></i></em></p>
+				</h3>
+			</article>
+			<article class="lst-module mb30">
+				<div class="settlement-product">
+					<nav class="settlement-product-nav">
+						<span>商品信息</span>
+					</nav>
+				</div>
+				<div>
+					<!--[each $detailModels]-->
+					<dl class="settlement-product-lst flex" skuid="<!--[$item.skuId]-->">
+						<dt>
+							<a href="../product/product.html?productId=<!--[$item.productId]-->">
+								<img src="../images/200.jpg" alt="" realSrc="<!--[$item.imageUrl]-->" class="lazy">
+							</a>
+						</dt>
+						<dd class="set-infor">
+							<div class="cartoper">
+								<i class="numadd">x<!--[$item.quantity]--></i>
+							</div>
+							<h3><a href="../product/product.html?productId=<!--[$item.productId]-->"><!--[$item.productName]--></a></h3>
+							<p class="cartstyle">
+								<em><!--[$item.shortName]--></em><em><!--[$item.size]--></em>
+								<!--[if $item.promotionType == 'ManZeng']-->
+								<em class="zp"><img src="../images/zengpin.png"></em>
+								<!--[elseif  $item.promotionType == 'JiaJiaGou']-->
+								<em class="jjgo"><img src="../images/jjgo.png"></em>
+								<!--[/if]-->
+							</p>
+							<aside class="cartprice">
+								<!--[if $item.promotionType == 'Ordinary']-->
+								<span class="reality"><i>￥</i><!--[$item.salePrice]--></span>
+								<!--[else]-->
+								<span class="reality"><i>￥</i><!--[$item.salePrice]--></span>
+								<del class="del"><i>￥</i><!--[$item.sourceSalePrice]--></del>
+								<!--[/if]-->
+							</aside>
+						</dd>
+					</dl>
+					<!--[/each]-->
+				</div>
+			</article>
+			<article class="lst-module mb30">
+				<h3 class="orderlst-num">
+					<p><em class="c9">下单时间</em><em class="tel"><!--[$orderTime]--></em></p>
+				</h3>
+				<h3 class="orderlst-num">
+					<p><em class="c9">支付方式</em><em class="tel">微信支付</em></p>
+				</h3>
+			</article>
+			<article class="lst-module mb30">
+				<ul class="settle-lst line">
+					<li class="flex jbw">
+						<p>商品金额</p>
+						<p>￥<!--[$productPrice]--></p>
+					</li>
+					<li class="flex jbw">
+						<p>运费</p>
+						<p>+￥<!--[$expressPrice]--></p>
+					</li>
+					<li class="flex jbw">
+						<p>优惠券</p>
+						<p>-￥<!--[$youhuijuanPrice]--></p>
+					</li>
+					<li class="flex jbw">
+						<p>满减</p>
+						<p>-￥<!--[$manjianPrice]--></p>
+					</li>
+				</ul>
+				<ul class="settle-lst">
+					<li class="flex jbw">
+						<p class="c9">合计</p>
+						<p class="brown">￥<i class="f34"><!--[$totalPrice]--></i></p>
+					</li>
+				</ul>
+			</article>
+		</div>
+		<footer id="yg-fd">
+			<dl class="cart-bar-nav jbw">
+				<dt>
+					<nav class="o-service">
+			          <a href="javascript:void(0);" class="flex" id="js_kefu_btn">
+			            <i class="service mr15"></i>
+			            <p class="brown">客服</p>
+			          </a>
+			        </nav>
+				</dt>
+				<dd class="flex" id="js_comment">
+					<p class="o-but" id="js_comment_order"><a class="smallbut" href="javascript:void(0);">评 价</a></p>
+				</dd>
+			</dl>
+		</footer>
+		<div id="js_del_layer"></div>
+		<div id="js_kefu" style = "display:none;">
+			<article class="user-twocode-layer">
+			    <a class="layer-close" href="javascript:void(0);"><img alt="" src="../images/close.png"></a>
+			    <div class="user-two-code">
+					<p>您可在微信中搜索“壹果Yiigoo”或长按下方二维码，关注壹果公众号后享受客户服务。</p>
+					<div class="two-ma-pic">
+						<img src="../images/two-dimension.jpg" alt="">
+					</div>
+			    </div>
+			 </article>
+			<div class="clicklayer"></div>
+		</div>
+	</div>
+	
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function(e) {
+                document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth*20/375 + 'px';
+    }, false);
+</script>
+<script type="text/javascript" src="../lib/jquery-2.1.1.min.js" ></script>
+<script type="text/javascript" src="../lib/swiper.min.js" ></script>
+<script type="text/javascript" src="../lib/fxtpl.min.js" ></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/user/orderdetail.js"></script>
+</html>

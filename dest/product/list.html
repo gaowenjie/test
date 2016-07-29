@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="壹果yiigoo，全球双有机认证互联网品牌，致力创造对婴童更呵护、更舒服、更安心安全的产品，重新定义“互联网+”专业婴童品牌。">
+    <meta name="keywords" content="壹果，yiigoo，壹果企画，壹果企画（北京）科技有限公司，晒单，有机，无甲醛，婴幼儿用品">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/yiigoo.css">
+	<link rel="stylesheet" type="text/css" href="../css/swiper.css">
+  	<script src="../lib/swiper.min.js" type="text/javascript"></script>
+	<title>商品列表-壹果</title>
+</head>
+<body>
+<div id="yg-doc" style="height:100%">
+		<div id="yg-bd">
+			<article class="lst-module">
+				<nav class="lst-control flex">
+					<a href="javascript:void(0);" class="lst-control-items" id="newBtn">新品</a>
+					<a href="javascript:void(0);" class="lst-control-items on" id="sortBtn">价格<i class="sort"></i></a>
+				</nav>
+				<ul class="product-lst-items clearfix" id="js_productList">
+					<!--[each $extra as $proList]-->
+					<li>
+					<a href="../product/product.html?productId=<!--[$proList.id]-->">
+							<aside class="items-img">
+								<img src="../images/400.jpg" class="lazy" realSrc="<!--[$proList.imageUrl]-->">
+							</aside>
+							<p class="items-title"><!--[$proList.productName]--></p>
+							<p class="items-price"><i>￥</i><!--[$proList.productSalePrice]--></p>
+						</a>
+					</li>
+					<!--[/each]-->
+				</ul>
+			</article>
+			<div id="js_preloading">
+	      		  <p class="load jbc"><i></i><em>加载中</em></p>
+	     	</div>
+		</div>
+		<footer id="yg-fd">
+	      <div class="fd-bar">
+	        <nav class="fd-nav">
+	          <a href="javascript:void(0);" id="js_bottombar_index" >
+	            <i class="iconfont">&#xe654;</i>
+	            <p>首页</p>
+	          </a>
+	          <a href="javascript:void(0);" id="js_bottombar_list" class="active">
+	            <i class="iconfont">&#xe639;</i>
+	            <p>好物</p>
+	          </a>
+	          <a href="javascript:void(0);" id="js_bottombar_mall">
+	            <i class="iconfont">&#xe620;</i>
+	            <p>壹果园</p>
+	          </a>
+	          <a href="javascript:void(0);" id="js_bottombar_cart">
+	            <i class="iconfont">&#xe64c;</i>
+	            <p>购物车</p>
+	          </a>
+	          <a href="javascript:void(0);" id="js_bottombar_user">
+	            <i class="iconfont">&#xe656;</i>
+	            <p>我的</p>
+	          </a>
+	        </nav>
+	      </div>
+	    </footer>
+	</div>
+</body>
+<script type="text/javascript" src="../lib/jquery-2.1.1.min.js" ></script>
+<script type="text/javascript" src="../lib/fxtpl.min.js"></script>
+<script type="text/javascript" src = "../js/common.js"></script>
+<script type="text/javascript" src="../js/productList.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function(e) {
+                document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth*20/375 + 'px';
+    }, false);
+  	var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 4,
+        paginationClickable: true,
+        spaceBetween: 5,
+        width:4.1255
+    });
+</script>
+</html>

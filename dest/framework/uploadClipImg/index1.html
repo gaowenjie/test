@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+<meta name="msapplication-tap-highlight" content="no"/>
+<link rel="stylesheet" href="./demo/style.css?v=2">
+<link rel="stylesheet" href="./demo/comm.css">
+<title>图片编辑(双指旋转和双指缩放)</title>
+</head>
+<body>
+<!--加载资源-->
+<div class="lazy_tip" id="lazy_tip">
+	<span>1%</span><br>
+	加载中......
+</div>
+<div class="lazy_cover"></div>
+<div class="resource_lazy hide"></div>
+
+<div class="pic_edit">
+	<h2 style="color: #FFFFFF">图片编辑(双指旋转和双指缩放)</h2>
+
+	<div id="clipArea"></div>
+	<div class="clipType"><span id="type1">1:1</span><span id="type2">4:3</span></div>
+	<button id="upload2">选择图片</button>
+    <button id="clipBtn">上传图片</button>
+	
+	<input type="file" id="file" style="opacity: 0;position: fixed;bottom: -100px">
+</div>
+<img src="" title="upload.jpg" fileName="" id="hit" style="display:none;z-index: 9">
+
+<script src="./demo/jquery-2.1.0.min.js"></script>
+<script src="./demo/sonic.js"></script>
+<script src="./demo/comm.js"></script>
+<script src="./demo/hammer.js"></script>
+<script src="./demo/iscroll-zoom.js"></script>
+<script src="./demo/jquery.photoClip.js?v=1"></script>
+<script>
+var hammer = '';
+var currentIndex = 0;
+var body_width = $('body').width();
+var body_height = $('body').height();
+//1:1
+$('#type1').on('touchstart', function () 
+{
+	$("#clipArea").html("");
+	//图片上传按钮
+	clipImg("type1");
+	
+});
+//4.3
+$('#type2').on('touchstart', function () 
+{
+	$("#clipArea").html("");
+	//图片上传按钮
+	clipImg("type2");
+	
+});
+clipImg("type1");
+//原始默认的上传
+function clipImg(type)
+{
+	if(type=="type1")
+	{
+		var clipHeight = body_width * 0.8125;
+	}else if(type=="type2")
+	{
+		var clipHeight = body_width * 0.8125*0.75;
+	}
+	$("#clipArea").photoClip(
+	{
+		width: body_width * 0.8125,
+		height: clipHeight,
+		file: "#file",
+		view: "#hit",
+		ok: "#clipBtn",
+		loadStart: function () {
+			//console.log("照片读取中");
+			$('.lazy_tip span').text('');  
+			$('.lazy_cover,.lazy_tip').show();
+		},
+		loadComplete: function () {
+			//console.log("照片读取完成");
+			$('.lazy_cover,.lazy_tip').hide();
+		},
+		clipFinish: function (dataURL) {
+			$('#hit').attr('src', dataURL);
+			saveImageInfo();
+		}
+	});
+};
+
+
+//图片上传
+function saveImageInfo() 
+{
+	var filename = $('#hit').attr('fileName');
+	var img_data = $('#hit').attr('src');
+	alert(img_data);
+	//通过ajax把值传到后台。
+	$.post("这里填写图片获取的网址", {image: img_data}, function (data) {
+		if (data != '') {
+		//	console.info(data);
+			//data 为返回文件名；
+			alert('提交成功');
+		}
+	});
+}
+
+/*获取文件拓展名*/
+function getFileExt(str) {
+	var d = /\.[^\.]+$/.exec(str);
+	return d;
+}
+
+//点击调用input的文件打开功能
+$(function () {
+	$('#upload2').on('touchstart', function () {
+		//图片上传按钮
+		$('#file').click();
+	});
+	$('#upload2').on('click', function () {
+		//图片上传按钮
+		$('#file').click();
+	});
+})
+</script>
+<div id="cover"></div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/yiigoo.css">
+	<link rel="stylesheet" type="text/css" href="../css/swiper.css">
+	<script src="lib/swiper.min.js" type="text/javascript"></script>
+	<title>商品详情页</title>
+</head>
+<body style="height:100%">
+	<div id="yg-doc">
+		<article class="add-car-layer" style="margin-top:90px;">
+			<a href="javascript:;" class="layer-close"><img src="../images/close.png" alt=""></a>
+			<div class="add-car-box">
+				<dl class="add-car-sku flex line">
+					<dt class="add-car-sku-img"><img src="../images/useless/168x168.jpg"></dt>
+					<dd class="add-car-sku-content">
+						<h2 class="sku-content-tit">有机棉横条纹T恤 </h2>
+						<p class="sku-content-price"><i>￥</i>129</p>
+						<div class="sku-content-info">
+							<em>已选 :</em>
+							<em>＂小熊猫刺绣＂</em>
+							<em>＂66cm/3-6个月＂</em>
+						</div>
+					</dd>
+				</dl>
+				<div class="add-car-type line">
+					<div class="add-car-type-lst">
+						<p class="add-tit">颜色/规格</p>
+						<div class="add-items clearfix">
+							<a href="javascript:;">森林童话系列</a>
+							<a class="active" href="javascript:;">小熊猫刺绣</a>
+						</div>
+					</div>
+					<div class="add-car-type-lst">
+						<p class="add-tit">尺码/大小</p>
+						<div class="add-items clearfix">
+							<a class="active" href="javascript:;">66cm/3-6个月</a>
+							<a href="javascript:;">80cm/7-9个月</a>
+							<a href="javascript:;">80cm/7-9个月</a>
+							<a href="javascript:;">80cm/7-9个月</a>
+							<a class="not" href="javascript:;">80cm/7-9个月</a>
+
+							<a class="active" href="javascript:;">66cm/3-6个月</a>
+							<a href="javascript:;">80cm/7-9个月</a>
+							<a href="javascript:;">80cm/7-9个月</a>
+							<a href="javascript:;">80cm/7-9个月</a>
+							<a class="not" href="javascript:;">80cm/7-9个月</a>
+						</div>
+					</div>
+					<div class="add-car-type-lst">
+						<p class="add-tit">购买数量</p>
+						<div class="pt30">
+							<article class="add-num flex">
+								<div class="prev not"><a class="iconfont icon-jianhao" href="javascript:;"></a></div>
+								<div class="shuru">1</div>
+								<div class="next"><a class="iconfont icon-jiahao" href="javascript:;"></a></div>
+							</article>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a class="add-car-but" href="javascript:;">加入购物车</a>
+		</article>
+		<div class="clicklayer"></div>
+	</div>
+</body>
+<script>
+	document.addEventListener('DOMContentLoaded', function(e) {
+                document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth*20/375 + 'px';
+		}, false);
+	 var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        paginationClickable: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: 2500,
+        autoplayDisableOnInteraction: false
+    });
+</script>
+</html>

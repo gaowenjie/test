@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="壹果Yiigoo，致力创造对婴童更呵护、更舒服、更安心安全的产品，重新定义“互联网+”专业婴童品牌。">
+    <meta name="keywords" content="壹果,yiigoo,壹果企画,壹果企画（北京）科技有限公司,母婴,婴童,爬服">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/yiigoo.css">
+	<title>购物车</title>
+</head>
+<body style="height:100%">
+	<!--无商品状态-->
+	<div id="js_cart_empty" style="display:none;">
+		<div class="shopping-init">
+			<article class="shopping-init-inner">
+				<i class="iconfont icon-gouwuche1"></i>
+				<p class="init-inner-txt">购物车空空如也</p>
+				<a class="init-inner-but" href="../index.html">去逛逛</a>
+			</article>
+		</div>
+	</div>
+	<!-- 删除弹层 -->
+	<div id="js_del_layer"></div>
+	<!-- 满赠弹层 -->
+	<div id="js_manzeng_layer"></div>
+	<!-- 加价购弹层 -->
+	<div id="js_jiajiagou_layer"></div>
+	<div id="yg-doc" style="display:none;">
+		<div class="shopping-cart">
+			<div class="cartlst">
+				<nav class="cartlst-tit">
+					<h3 class="cartlst-tit-sale" id="js_manjian_type">
+						<!-- <span>满减：</span>
+						<span >购物满199减10</span> -->
+					</h3>
+					<p class="cartlst-tit-Coupon">
+						<a href="javascript:void(0);" id="js_zengpin_type">赠品</a>
+						<a href="javascript:void(0);" id="js_jaijaigou_type">加价购</a>
+					</p>
+				</nav>
+				<div id="js_productlist">
+				
+				</div>    
+			</div>
+		</div>
+		<footer id="yg-fd">
+			<dl class="cart-bar-nav jbw">
+				<dt class="cart-bar-options">
+					<p class="cart-item-option on" id="js_select_all"><a class="iconfont" href="javascript:;"></a></p>
+					<p>全选</p>
+				</dt>
+				<dd class="cart-bar-result">
+					<div class="cart-money">
+						<span>合计:</span>
+						<span><i>￥</i><em id="js_total_priceAll">00</em></span>
+					</div>
+					<div class="cart-but">
+						<a href="javascript:;" id="js_jiesuan">结 算</a>
+					</div>
+				</dd>
+			</dl>
+		</footer>
+	</div>
+	<!--普通商品购物车列表，模板-->
+	<div id = "js_product_list" style="display:none;">
+		<!--[each $extra]-->
+		<!--赠品商品-->
+		<!--[if $item.salesType == 'ManZeng']-->
+		<dl class="cartlst-item flex js_zengpin_cart" id="cartid_<!--[$item.id]-->" productId="<!--[$item.productId]-->" skuid="<!--[$item.skuId]-->">
+			<dt>
+				<p class="cart-item-option on js_user_select js_user_select_mz"><a href="javascript:;" class="iconfont"></a></p>
+			</dt>
+			<dd class="flex">
+				<article class="flex">
+					<div class="cart-item-img">
+						<a href="../product/product.html?productId=<!--[$item.productId]-->">
+						<img src="<!--[$item.imagePath]-->" alt="">
+						</a>
+					</div>
+					<div class="cart-item-txt">
+						<del class="del js_del" id="delCartId_<!--[$item.id]-->"><i class="iconfont"></i></del>
+						<div class="cartoper">
+							<i class="numadd">x1</i>
+						</div>
+						<h3 class="cartit pt30">
+							<a href="../product/product.html?productId=<!--[$item.productId]-->"><!--[$item.productName]--></a>
+						</h3>
+						<p class="cartstyle">
+							<em><!--[$item.shortName]--></em>
+							<em><!--[$item.sizeName]--></em>
+							<em class="zp"><img src="../images/zengpin.png"/></em>
+						</p>
+						<aside class="cartprice">
+							<span>
+								<i>￥</i><em class="js_selcart_price"><!--[$item.promotionPrice]--></em><i>.00</i>
+							</span>
+							<del>￥<!--[$item.salesPrice]--></del>
+						</aside>
+						
+					</div>
+				</article>
+			</dd>
+		</dl>
+		<!--加价购购物车列表，模板-->
+		<!--[elseif  $item.salesType == 'JiaJiaGou']-->
+		<dl class="cartlst-item flex js_jiajiagou_cart" id="cartid_<!--[$item.id]-->" productId="<!--[$item.productId]-->" skuid="<!--[$item.skuId]-->">
+			<dt>
+				<p class="cart-item-option on js_user_select js_user_select_jiajiagou"><a href="javascript:;" class="iconfont"></a></p>
+			</dt>
+			<dd class="flex">
+				<article class="flex">
+					<div class="cart-item-img">
+						<a href="../product/product.html?productId=<!--[$item.productId]-->">
+							<img src="<!--[$item.imagePath]-->" alt="">
+						</a>
+					</div>
+					<div class="cart-item-txt">
+						<del class="del js_del" id="delCartId_<!--[$item.id]-->"><i class="iconfont"></i></del>
+						<div class="cartoper">
+							<i class="numadd">x1</i>
+						</div>
+						<h3 class="cartit pt30"><a href="../product/product.html?productId=<!--[$item.productId]-->"><!--[$item.productName]--></a></h3>
+						<p class="cartstyle">
+							<em><!--[$item.shortName]--></em>
+							<em><!--[$item.sizeName]--></em>
+							<em class="jjgo"><img src="../images/jjgo.png"/></em>
+						</p>
+						<aside class="cartprice">
+							<span>
+								<i>￥</i><em class="js_selcart_price"><!--[$item.promotionPrice]--></em><i>.00</i>
+							</span>
+							<del>￥<!--[$item.salesPrice]--></del>
+						</aside>
+					</div>
+				</article>
+			</dd>
+		</dl>
+		<!--普通商品购物车列表，模板-->
+		<!--[elseif  $item.salesType == 'Ordinary']-->
+			<!--[if $item.stockNum == '0']-->
+			<dl class="cartlst-item flex not" id="cartid_<!--[$item.id]-->" productId="<!--[$item.productId]-->" skuid="<!--[$item.skuId]-->">
+				<dt>
+					<p class="cart-item-option no"><a href="javascript:;" class="iconfont"></a></p>
+				</dt>
+				<dd class="flex">
+					<article class="flex">
+						<div class="cart-item-img">
+							<i></i>
+							<a href="../product/product.html?productId=<!--[$item.productId]-->">
+							<img src="<!--[$item.imagePath]-->" alt="">
+							</a>
+						</div>
+						<div class="cart-item-txt">
+							<del class="del js_del" id="delCartId_<!--[$item.id]-->"><i class="iconfont" ></i></del>
+							<div class="cartoper">
+								<article class="cart-add-num flex">
+									<p class="prev"><i class="iconfont icon-jianhao"></i></p>
+									<div class="shuru"><!--[$item.quantity]--></div>
+									<p class="next"><i class="iconfont icon-jiahao"></i></p>
+								</article>
+							</div>
+							<h3 class="cartit pt30">
+								<a href="../product/product.html?productId=<!--[$item.productId]-->"><!--[$item.productName]--></a>
+							</h3>
+							<p class="cartstyle"><em><!--[$item.shortName]--></em><em><!--[$item.sizeName]--></em></p>
+							<aside class="cartprice"><i>￥</i><em><!--[$item.salesPrice]--></em><i>.00</i></aside>
+						</div>
+					</article>
+				</dd>
+			</dl>
+			<!--[else]-->
+			<dl class="cartlst-item flex" id="cartid_<!--[$item.id]-->" productId="<!--[$item.productId]-->" skuid="<!--[$item.skuId]-->">
+				<dt>
+					<p class="cart-item-option on js_user_select js_user_select_usual"><a href="javascript:;" class="iconfont"></a></p>
+				</dt>
+				<dd class="flex">
+					<article class="flex">
+						<div class="cart-item-img">
+							<a href="../product/product.html?productId=<!--[$item.productId]-->">
+							<img src="<!--[$item.imagePath]-->" alt="">
+							</a>
+						</div>
+						<div class="cart-item-txt">
+							<del class="del js_del" id="delCartId_<!--[$item.id]-->"><i class="iconfont " ></i></del>
+							<div class="cartoper">
+								<article class="cart-add-num flex">
+									<p class="prev  js_reduce_num" thisid="<!--[$item.skuId]-->"><i class="iconfont icon-jianhao"></i></p>
+									<div class="shuru js_selcart_num"><!--[$item.quantity]--></div>
+									<p class="next js_add_num" thisid="<!--[$item.skuId]-->"><i class="iconfont icon-jiahao"></i></p>
+								</article>
+							</div>
+							<h3 class="cartit pt30">
+								<a href="../product/product.html?productId=<!--[$item.productId]-->"><!--[$item.productName]--></a>
+							</h3>
+							<p class="cartstyle"><em><!--[$item.shortName]--></em><em><!--[$item.sizeName]--></em></p>
+							<aside class="cartprice"><i>￥</i><em class="js_selcart_price"><!--[$item.salesPrice]--></em><i>.00</i></aside>
+						</div>
+					</article>
+				</dd>
+			</dl>
+			<!--[/if]-->
+		<!--[/if]-->
+		<!--[/each]-->
+	</div>
+	<!--赠品购物车列表，模板-->
+	<div id="js_zengping_module" style="display:none;">
+		<dl class="cartlst-item flex js_zengpin_cart" id="cartid_<!--[$id]-->" productId="<!--[$productId]-->" skuid="<!--[$skuId]-->">
+			<dt>
+				<p class="cart-item-option on js_user_select js_user_select_mz"><a href="javascript:;" class="iconfont"></a></p>
+			</dt>
+			<dd class="flex">
+				<article class="flex">
+					<div class="cart-item-img">
+						<a href="../product/product.html?productId=<!--[$productId]-->">
+						<img src="<!--[$imagePath]-->" alt="">
+						</a>
+					</div>
+					<div class="cart-item-txt">
+						<del class="del js_del" id="delCartId_<!--[$id]-->"><i class="iconfont"></i></del>
+						<div class="cartoper">
+							<i class="numadd">x1</i>
+						</div>
+						<h3 class="cartit pt30">
+							<a href="../product/product.html?productId=<!--[$productId]-->"><!--[$productName]--></a>
+						</h3>
+						<p class="cartstyle">
+							<em><!--[$shortName]--></em>
+							<em><!--[$sizeName]--></em>
+							<em class="zp"><img src="../images/zengpin.png"/></em>
+						</p>
+						<aside class="cartprice">
+							<span>
+								<i>￥</i><em class="js_selcart_price"><!--[$promotionPrice]--></em><i>.00</i>
+							</span>
+							<del>￥<!--[$salesPrice]--></del>
+						</aside>
+					</div>
+				</article>
+			</dd>
+		</dl>
+	</div>
+	<!--加价购购物车列表，模板-->
+	<div id="js_jiajiagoucart_module" style="display:none;">
+		<dl class="cartlst-item flex js_jiajiagou_cart" id="cartid_<!--[$id]-->" productId="<!--[$productId]-->" skuid="<!--[$skuId]-->">
+			<dt>
+				<p class="cart-item-option on js_user_select js_user_select_jiajiagou"><a href="javascript:;" class="iconfont"></a></p>
+			</dt>
+			<dd class="flex">
+				<article class="flex">
+					<div class="cart-item-img">
+						<a href="../product/product.html?productId=<!--[$productId]-->">
+							<img src="<!--[$imagePath]-->" alt="">
+						</a>
+					</div>
+					<div class="cart-item-txt">
+						<del class="del js_del" id="delCartId_<!--[$id]-->"><i class="iconfont"></i></del>
+						<div class="cartoper">
+							<i class="numadd">x1</i>
+						</div>
+						<h3 class="cartit pt30"><a href="../product/product.html?productId=<!--[$productId]-->"><!--[$productName]--></a></h3>
+						<p class="cartstyle">
+							<em><!--[$shortName]--></em>
+							<em><!--[$sizeName]--></em>
+							<em class="jjgo"><img src="../images/jjgo.png"/></em>
+						</p>
+						<aside class="cartprice">
+							<span>
+								<i>￥</i><em class="js_selcart_price"><!--[$promotionPrice]--></em><i>.00</i>
+							</span>
+							<del>￥<!--[$salesPrice]--></del>
+						</aside>
+					</div>
+				</article>
+			</dd>
+		</dl>
+	</div>
+	<!--赠品，模板-->
+	<div id="js_manzeng_module" style="display:none;">
+		<article class="add-car-layer" style="position:fixed;bottom:0px;left:0px;width:100%;z-index:400;background:#000;">
+			<a class="layer-close"  href="javascript:void(0);"><img alt="" src="../images/close.png"></a>
+			<div class="cartbox">
+				<div class="cartlst">
+					<nav class="cartlst-tit">
+						<h3 class="cartlst-tit-sale">
+							<span class="c3" id="js_manzeng_no">满<i class="brown"><!--[$limitPrice]--></i>元可免费赠送以下商品</span>
+						</h3>
+					</nav>
+					<!--[each $promotionProductList as $list $i]-->
+					<dl class="cartlst-item flex" >
+						<dt>
+							<p class="cart-item-option js_zengpin_radio" productId="<!--[$list.productId]-->"><a href="javascript:void(0);" class="iconfont"></a></p>
+						</dt>
+						<dd>	
+							<article class="flex">					
+								<div class="cart-item-img">
+									<a href="../product/product.html?productId=<!--[$list.productId]-->">
+										<img src="<!--[$list.imagePath]-->" alt="">
+									</a>
+								</div>
+								<div class="cart-item-txt">
+									<div class="cartoper">
+										<article class="select-size on">
+											<a href="javascript:void(0);" id="js_zengpinSizeA_<!--[$i]-->" class="js_zengpin_size">
+												<p class="shuzi"><!--[$list.sizeName]--></p>
+												<p class="triangle-down"></p>
+											</a>
+										</article>
+									</div>
+									<h3 class="cartit pt30">
+										<a href="../product/product.html?productId=<!--[$list.productId]-->"><!--[$list.productName]--></a>
+									</h3>
+									<aside class="cartprice">
+										<span>
+											<i>￥</i><em class="js_selcart_price"><!--[$discountPrice]--></em>
+										</span>
+										<del>￥<i id="js_mzskuprice_<!--[$i]-->"><!--[$list.salesPrice]--></i></del>
+									</aside>
+									<p class="cartstyle"><em><!--[$list.shortName]--></em></p>
+								</div>
+							</article>
+							<article class="drop-down-box clearfix" style="display:none;" id="js_zengpinSizeCon_<!--[$i]-->">
+								<i class="i"></i>
+								<!--[each $list.promotionSkuList as $listItem $j]-->
+								<!--[if $j == 0]-->
+								<a href="javascript:void(0);"  class="on js_select_zpsize"  productSkuId="<!--[$listItem.skuId]-->" productStockNum="<!--[$listItem.stockNum]-->" productPrice="<!--[$listItem.salesPrice]-->"><!--[$listItem.sizeName]--></a>
+								<!--[else]-->
+								<a href="javascript:void(0);" class="js_select_zpsize"  productSkuId="<!--[$listItem.skuId]-->" productStockNum="<!--[$listItem.stockNum]-->" productPrice="<!--[$listItem.salesPrice]-->"><!--[$listItem.sizeName]--></a>
+								<!--[/if]-->
+								<!--[/each]-->
+							</article>
+						</dd>
+					</dl> 
+					<!--[/each]-->
+				</div>
+			</div>
+			<a href="javascript:void(0);" class="add-car-but" id="js_addZP_toCart">加入购物车</a>
+		</article>
+		<div class="clicklayer"></div>
+	</div>
+	<!--加价购，模板-->
+	<div id="js_jiajiagou_module" style="display:none;">
+		<article class="add-car-layer" style="position:fixed;bottom:0px;left:0px;width:100%;z-index:400;background:#000;">
+			<a class="layer-close"  href="javascript:void(0);"><img alt="" src="../images/close.png"></a>
+			<div class="cartbox">
+				<div class="cartlst">
+					<nav class="cartlst-tit">
+						<h3 class="cartlst-tit-sale" id="js_discountmoney_con">
+							<span class="c3">满<i class="brown"><!--[$limitPrice]--></i>元加<i class="brown"><!--[$discountPrice]--></i>元换购以下商品<i class="brown" id="js_discountmoney" style="display:none;">您还差**元</i></span>
+						</h3>
+					</nav>
+					<!--[each $promotionProductList as $list $i]-->
+					<dl class="cartlst-item flex" >
+						<dt>
+							<p class="cart-item-option js_jiajiagou_radio" productId="<!--[$list.productId]-->"><a href="javascript:void(0);" class="iconfont"></a></p>
+						</dt>
+						<dd>	
+							<article class="flex">					
+								<div class="cart-item-img">
+									<a href="../product/product.html?productId=<!--[$list.productId]-->">
+										<img src="<!--[$list.imagePath]-->" alt="">
+									</a>
+								</div>
+								<div class="cart-item-txt">
+									<div class="cartoper">
+										<article class="select-size on">
+											<a href="javascript:void(0);" id="js_jiajiagouSizeA_<!--[$i]-->" class="js_jiajiagou_size">
+												<p class="shuzi"><!--[$list.sizeName]--></p>
+												<p class="triangle-down"></p>
+											</a>
+										</article>
+									</div>
+									<h3 class="cartit pt30">
+										<a href="../product/product.html?productId=<!--[$list.productId]-->"><!--[$list.productName]--></a>
+									</h3>
+									<aside class="cartprice">
+										<span>
+											<i>￥</i><em class="js_selcart_price"><!--[$discountPrice]--></em>
+										</span>
+										<del>￥<i id="skuprice_<!--[$i]-->"><!--[$list.salesPrice]--></i></del>
+									</aside>
+									<p class="cartstyle"><em><!--[$list.shortName]--></em></p>
+								</div>
+							</article>
+							<article class="drop-down-box clearfix" style="display:none;" id="js_jiajiagouSizeCon_<!--[$i]-->">
+								<i class="i"></i>
+								<!--[each $list.promotionSkuList as $listItem $j]-->
+								<!--[if $j == 0]-->
+								<a href="javascript:void(0);"  class="on js_select_jjgsize" shortNameId ="<!--[$list.skuId]-->"  productSkuId="<!--[$listItem.skuId]-->" productStockNum="<!--[$listItem.stockNum]-->" productPrice="<!--[$listItem.salesPrice]-->"><!--[$listItem.sizeName]--></a>
+								<!--[else]-->
+								<a href="javascript:void(0);" class="js_select_jjgsize" shortNameId ="<!--[$list.skuId]-->" productSkuId="<!--[$listItem.skuId]-->" productStockNum="<!--[$listItem.stockNum]-->" productPrice="<!--[$listItem.salesPrice]-->"><!--[$listItem.sizeName]--></a>
+								<!--[/if]-->
+								<!--[/each]-->
+							</article>
+						</dd>
+					</dl> 
+					<!--[/each]-->
+				</div>
+			</div>
+			<a href="javascript:void(0);" class="add-car-but" id="js_addJJG_toCart">加入购物车</a>
+		</article>
+		<div class="clicklayer"></div>
+	</div>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function(e) {
+                document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth*20/375 + 'px';
+    }, false);
+</script>
+<script type="text/javascript" src="../lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../lib/fxtpl.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/cart.js"></script>
+</html>

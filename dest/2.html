@@ -1,0 +1,49 @@
+<html>
+
+<body>
+
+<a  class="share" url="http://m.yiigoo.com/action/join/index.html" href="javascript:;" style="font-size:10em;margin-top:50px">share1</a><br>
+<a  class="share" url="http://m.yiigoo.com/action/join/result.html" href="javascript:;" style="font-size:10em; margin-top:50px">share2</a><br>
+<a  class="share" url="http://m.yiigoo.com/action/join/fail.html" href="javascript:;" style="font-size:10em;margin-top:50px">share3</a><br>
+
+<a  class="close"  href="javascript:;" style="font-size:10em">close</a>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare" data="{'url':'http://m.yiigoo.com/action/join/index.html','title':'dasdasdadasdas','desc':'十大大苏打实打实大大'}" style="display:none">
+    <span class="bds_more">更多</span>
+    <a class="bds_tsina">新浪</a>
+    <a class="bds_sqq">腾讯</a>
+    <a class="bds_renren">人人</a>
+    <a class="bds_qzone">QQ </a>
+</div>
+
+<script type="text/javascript" src="http://m.yg.com/lib/jquery-2.1.1.min.js"></script>
+
+<script type="text/javascript" id="bdshare_js" data="type=tools&uid=0" ></script>
+    <script type="text/javascript" id="bdshell_js"></script>
+    <script type="text/javascript">
+$(".share").unbind("click").click(function(){
+
+	var txt=$(this).text();
+	var desc=$(this).text()+" abc test";
+	var url=$(this).attr("url");
+
+	var img="http://yiigoo-tmp.oss-cn-shanghai.aliyuncs.com/product/2016/07/27/1469620661548594841-200*200.jpg";
+
+	var data="{'url':"+url+",'title':"+txt+",'desc':"+desc+"}";
+	//shareConfig(txt,desc,url,img);
+		$("#bdshare").attr("data",data).show();
+	});
+
+$(".close").click(function(){
+$("#bdshare").hide();
+});
+
+
+
+        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+    </script>
+<!-- Baidu Button END -->
+
+</body>
+</html>

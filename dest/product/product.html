@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="壹果yiigoo个人晒单，有机产品为小宝宝提供更健康舒适的生活。">
+    <meta name="keywords" content="壹果，yiigoo，壹果企画，壹果企画（北京）科技有限公司，晒单，有机，无甲醛，婴幼儿用品">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/yiigoo.css">
+	<link rel="stylesheet" type="text/css" href="../css/swiper.css">
+	<title id="titleId">商品详情页</title>
+</head>
+<body>
+	<div class="nodata" id="loading">
+        <p class="no-img"></p>
+    </div>
+	<div id="yg-doc" style="display:none;">
+		<!--<header id="yg-hd">top</header>-->
+		<div id="yg-bd">
+			<article class="yg-module" id="js_product_details">
+				<div class="goods-slider">
+					<div class="swiper-container swiper-container-0">
+				        <div class="swiper-wrapper">
+				        	<!--[each $productImages]-->
+				            <div class="swiper-slide">
+				            	<a href="javascript:void(0);">
+				            		<img src="<!--[$item.imagePath]-->" alt="">
+				            	</a>
+				            </div>
+				            <!--[/each]-->
+				        </div>
+				        <!-- Add Pagination -->
+				        <div class="swiper-pagcon"><div class="swiper-pagination"></div></div>
+				    </div>
+				</div>
+				<div class="goods-info line">
+					<div class="flex jbw">
+						<div class="goods-info-tit"><!--[$productName]--></div>
+						<div class="goods-info-browse">
+							<a href="javascript:void(0);" class="fx">
+								<img src="../images/fx.png">
+							</a>
+						</div>
+					</div>
+					<div class="no">
+						<span class="goods-info-price"><i>￥</i><!--[$productSalePrice]--></span>
+						<del class="goods-info-del">￥<!--[$productOriginalPrice]--></del>
+					</div>
+				</div>
+				<div class="goods-info flex">
+					<span class="goods-info-to"><i class="i"><img src="../images/you.png"></i><em class="t">满199免运费</em></span>
+					<span class="goods-info-to"><i class="i"><img src="../images/go.png"></i><em class="t">7天无理由退换货</em></span>
+				</div>
+				<div class="goods-info bai js_add_carBtn" id="js_usersel_result">
+					<a href="javascript:void(0);" class="fselect">
+						<p class="goods-info-style">已选："<span class="gsy"><!--[$shortName]--></span>"</p>
+						<i class="i">&nbsp;</i>
+						<p class="goods-info-style">"<span class="gsy"><!--[$skus[0].sizeName]--></span>"</p>
+						<i class="gkIcon iconfont">&#xe600;</i>
+					</a>
+				</div>
+			</article>
+			<article class="lst-module">
+				<h3 class="bask-tit"><i class="iconfont">&#xe65f;</i><p>晒单</p></h3>
+				<div class="swiper-containerLst swiperlist">
+			        <ul class="swiper-wrapper list-bask-product" id="js_sameShaidan">
+			        	<!--[each $extra]-->
+			            <li class="swiper-slide">
+							<a href="../share/comment.html?publishId=<!--[$item.publishId]-->">
+								<p class="bask-img" style="background: url(<!--[$item.image]-->) center center no-repeat;background-size:auto 100%;"></p>
+								<p class="bask-txt"><!--[$item.nickName]--></p>
+								<p class="bask-describe"><!--[$item.babyBirthday]--></p>
+							</a>
+			            </li>
+			            <!--[/each]-->
+			        </ul>
+			    </div>
+
+			</article>
+			<article class="yg-module">
+				<h3 class="goods-details-tit">
+					<p class="visit" id="js_proTab"><span>商品详情</span><i></i></p>
+					<i class='tline'></i>
+					<p id = "js_commonTab"><span>评论</span><i></i></p>
+				</h3>
+				<div class="goods-details-lst" id = "js_productImg">
+					<!--[each $imgData]-->
+					<aside><img src="../images/640-672.jpg" realSrc="<!--[$item]-->" alt="" class="lazy"></aside>
+					<!--[/each]-->
+					
+				</div>
+				<div id = "js_product_common" style = "display:none;">
+					<div class="goods-details-comment" id = "js_product_common_con" >
+					
+					</div>
+					<div id="js_preloading" style="display:none;">
+				        <p class="load jbc"><i></i><em>加载中</em></p>
+				    </div>
+				</div>
+			</article>
+			
+		</div>
+		<a href="javascript:void(0);" class="goTop" id="js_goTop" style="display:none;"><img src="../images/top.png"></a>
+		<footer id="yg-fd">
+			<div class="fd-bar">
+				<nav class="fd-nav b">
+		          <a href="../cart/cart.html">
+		            <i class="iconfont" id="js_shoppingNum">&#xe64c;</i>
+		            <p>购物车</p>
+		          </a>
+		        </nav>
+				<div class="flex">
+					<p class="butB js_add_carBtn" id="js_addbtn"><a href="javascript:void(0);">加入购物车</a></p>
+				</div>
+			</div>
+		</footer>
+		<!-- 弹层 -->
+		<div id="js_add_shoppingCar" style="display:none;">
+			<article class="add-car-layer"  style="background:#fff">
+				<div>
+					<a href="javascript:void(0);" class="layer-close" id="js_layer_close"><img src="../images/close.png" alt=""></a>
+					<div class="add-car-box">
+						<dl class="add-car-sku flex line" id="js_product_msg">
+							<dt class="add-car-sku-img"><img src="<!--[$productImages[0].imagePath]-->" id="js_product_img"></dt>
+							<dd class="add-car-sku-content" >
+								<h2 class="sku-content-tit" id="js_product_name"><!--[$productName]--> </h2>
+								<div style="display:none;" id="js_one_price"><!--[$productSalePrice]--></div>
+								<div style="display:none;" id="js_one_stockNum"><!--[$skus[0].stockNum]--></div>
+								<div style="display:none;" id="js_one_skuId"><!--[$skus[0].id]--></div>
+								<p class="sku-content-price"><i>￥</i><span id="js_count_money"><!--[$productSalePrice]--></span></p>
+								<div class="sku-content-info">
+									<em>已选 :</em>"
+									<em id="js_colorAndType_result"><!--[$shortName]--></em>"&nbsp;&nbsp;&nbsp;"
+									<em id="js_sizeAndLength_result"><!--[$skus[0].sizeName]--></em>"
+								</div>
+							</dd>
+						</dl>
+						<div class="add-car-type line">
+							<div class="add-car-type-lst">
+								<p class="add-tit">颜色/规格</p>
+								<div class="add-items clearfix" id="js_colorAndType">
+									<!--[each $extra $i]-->
+									<!--[if $i == '0']-->
+									<a class="active" href="javascript:void(0);" productimg="<!--[$item.productImages[0].imagePath]-->" productname="<!--[$item.productName]-->" skus="<!--[$i]-->"><!--[$item.shortName]--></a>
+									<!--[else]-->
+									<a class="" href="javascript:void(0);" productimg="<!--[$item.productImages[0].imagePath]-->" productname="<!--[$item.productName]-->" skus="<!--[$i]-->"><!--[$item.shortName]--></a>
+									<!--[/if]-->
+									<!--[/each]-->
+								</div>
+							</div>
+							<div class="add-car-type-lst">
+								<p class="add-tit">尺码/大小</p>
+								<div class="add-items clearfix" id="js_sizeAndLength">
+									<!--[each $skus $i]-->
+									<!--[if $item.stockNum == '0']-->
+									<a class="not" href="javascript:void(0);" productSkuId="<!--[$item.id]-->" productStockNum="<!--[$item.stockNum]-->" productPrice="<!--[$item.salesPrice]-->"><!--[$item.sizeName]--></a>
+									<!--[else]-->
+									<a class="forsale" href="javascript:void(0);" productSkuId="<!--[$item.id]-->" productStockNum="<!--[$item.stockNum]-->" productPrice="<!--[$item.salesPrice]-->"><!--[$item.sizeName]--></a>
+									<!--[/if]-->
+									<!--[/each]-->
+								</div>
+							</div>
+							<div class="add-car-type-lst">
+								<p class="add-tit">购买数量</p>
+								<div class="pt30">
+									<article class="add-num flex">
+										<div class="prev not js_reduce_num"><a class="iconfont icon-jianhao" href="javascript:void(0);"></a></div>
+										<div class="shuru"><input id="js_count_num" type="tel" value="1" class="gs-count" disabled="disabled"></div>
+										<div class="next js_add_num"><a class="iconfont icon-jiahao" href="javascript:void(0);"></a></div>
+									</article>
+								</div>
+							</div>
+						</div>
+					</div>
+					<a class="add-car-but" id="js_addto_shopcar" href="javascript:void(0);">加入购物车</a>
+				</div>
+				<!--[/each]-->
+			</article>
+			<div class="clicklayer"></div>
+		</div>
+	</div>
+	<!-- 评论数据模板 -->
+	<div id="js_commentData" style="display:none;">
+		<!--[each $extra]-->
+		<article>
+			<dl class="goods-details-user">
+				<dt><img src="<!--[$item.headImageUrl]-->"></dt>
+				<dd class="clearfix">
+					<h3 class="user-name"><!--[$item.nickName]--></h3>
+					<p class="tag">
+						<!--[each $item.commentTag as $tags]-->
+						<i><!--[$tags]--></i>
+						<!--[/each]-->
+					</p>
+				</dd>
+			</dl>
+			<p class="details-user-txt"><!--[$item.content]--></p>
+			<ul class="details-user-lst clearfix">
+				<!--[each $item.images as $commentImgs]-->
+				<li><a href="javascript:void(0);"><img src="../images/200.jpg" realSrc="<!--[$commentImgs]-->" class="lazy"></a></li>
+				<!--[/each]-->
+			</ul>
+			<p class="details-user-info clearfix"><em><!--[$item.createTime]--></em><em><!--[$item.shortName]--></em><em><!--[$item.sizeName]--></em></p>
+		</article>
+		<!--[/each]-->
+	</div>
+</body>
+<script type="text/javascript" src="../lib/swiper.min.js" ></script>
+<script type="text/javascript" src="../lib/jquery-2.1.1.min.js" ></script>
+<script type="text/javascript" src="../lib/fxtpl.min.js"></script>
+<script type="text/javascript" src = "../js/common.js"></script>
+<script type="text/javascript" src = "../js/productDetails.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="../lib/wxshare.js"></script>
+<script>
+	document.addEventListener('DOMContentLoaded', function(e) {
+                document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth*20/375 + 'px';
+		}, false);
+</script>
+</html>

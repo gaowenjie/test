@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="壹果Yiigoo，致力创造对婴童更呵护、更舒服、更安心安全的产品，重新定义“互联网+”专业婴童品牌。">
+    <meta name="keywords" content="壹果,yiigoo,壹果企画,壹果企画（北京）科技有限公司,母婴,婴童,爬服">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>注册领券</title>
+</head>
+<body>
+	<div id="yg-doc" class="signCoupon">
+		<div class="signContent">
+			<article><img src="images/01_01.jpg" alt=""></article>
+			<article><img src="images/01_02.jpg" alt=""></article>
+			<article><img src="images/01_03.jpg" alt=""></article>
+			<article><img src="images/2_01.jpg" alt=""></article>
+			<article><img src="images/2_02.jpg" alt=""></article>
+			<article class="event-fn">
+				<div class="event-item">
+					<input class="form-control" type="tel" placeholder="输入手机号" id="mobile" maxlength="11">
+				</div>
+				<div class="event-item">
+					<div style="width:50%;"><input class="form-control" type="tel" placeholder="输入验证码" id="verifyCode" maxlength="6"></div>
+					<div class="send"><button type="" id="vertify">获取验证码</button></div>
+				</div>
+				<!--<div class="event-item on">
+					<div style="width:50%;"><input class="form-control" type="tel" placeholder="输入验证码"></div>
+					<div class="send"><button type="" id="vertify">获取验证码</button></div>
+				</div>-->
+				<div class="flex" id="flex"><button class="submit" id="login">立刻领取</button></div>
+				<!--<div class="flex"><a href="" class="submit on">立刻领取</a></div>-->
+			</article>
+			<article class="event-txt">
+				<h3>活动规则：</h3>
+				<p>1.领取流程：扫描壹果微信二维码，点击活动链接，成功验证手机后，向工作人员出示参与成功页面领取活动礼品。</p>
+				<p>2.领取说明：本活动仅限新注册用户，同一手机号，同一设备视为同一用户，每位客户限领取一次。</p>
+			</article>
+		</div>
+	</div>
+</body>
+<script>
+	document.addEventListener('DOMContentLoaded', function(e) {
+                document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth*20/375 + 'px';
+		}, false);
+</script>
+<script src="js/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8" ></script>
+<script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8" ></script>
+
+<script type="text/javascript">
+var BOM = {};
+//解析url字符串
+BOM.parseQueryStr=function (str)
+{
+	var tempa=null;//存放临时匹配到的字符串的那个临时数组
+	//定义一个取每一对值的正则，把满足要求的内容分别定义成两个分组。匹配到的内容不到包括=?&这三个字符既可
+	var reg=/([^=?&]+)=([^=?&]+)/g;
+	var obj={}
+	while( tempa=reg.exec(str)){//把exec的返回值赋给这个tempa,如果tempa不是null，则exec会执行多次。
+	//tempa是一个数组，这个数组的长度是reg中匹配到的子表达式（分组）的个数加1
+	//tempa的第0项是整个正则匹配到的内容，所以从索引1开始
+		obj[tempa[1]]=tempa[2];			
+		}
+	return obj;
+} 
+var urlData =BOM.parseQueryStr(window.location.href);
+var dataUrl = "http://api.yiigoo.com/";//http://api.yiigoo.com/.....http://192.168.1.195.:8080/yg_mobile/
+//fromcode 存在，礼品页面。
+if(urlData.fromcode)
+{
+	if($.cookie('yiigoo'))
+	{
+		if($.cookie('yiigoo_lipin'))
+		{
+			//如果已经领取，直接跳转到失败页面。
+			window.location.href = "failed.html";
+		}else
+		{
+			$.ajax({                                                  //调用jquery的ajax方法   
+		        type: "get",   
+		        async:false,                                    //设置ajax方法提交数据的形式   
+		        url: dataUrl+"mobile/admin/updateFromCode.do?username="+ $.cookie('yiigoo') + "&fromCode="+urlData.fromcode,   
+		        dataType: "jsonp",
+				jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+				jsonpCallback:"fn",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+				 //输入框writer中的值作为提交的数据   
+		        success: function(data)
+		        {
+		        	$.cookie('yiigoo_lipin', mobile,{ expires: 7 });
+		        	window.location.href = "result.html";
+					return;
+		        },
+		        error:function(){
+		        	alert("请求数据错误。请稍后再试！");
+		        	//window.location.reload();
+		        }
+			});
+		}
+		
+	}
+}else //不存在，优惠券页面。
+{
+	//如果已经注册，直接跳转到优惠券页面。
+	if($.cookie('yiigoo'))
+	{
+		window.location.href = "giftVoucher.html";
+	}
+};
+
+$('#vertify').click(function()
+{
+	var mobile = $('#mobile').val();
+	if(mobile == "" || mobile==null || mobile.length !== 11)
+	{
+		alert("您输入的手机号有误！");	
+		return false;
+	};
+	// if($.cookie('yiigoo')!=undefined && $.cookie('yiigoo')!=""  && $.cookie('yiigoo') != mobile)
+	// {
+	// 	alert("同一设备只能领取一次。");return;
+	// };
+	$('#vertify').attr('disabled',true);
+	//$('#vertify').addClass('curr');
+	$('#vertify').html('剩余60秒');
+	var s = 60;//用来记录秒,因为需求是从1开始的。
+	var w = setInterval(function () {
+    	s--;
+		$('#vertify').html('剩余'+ s +'秒');
+		if(s == 0){
+			$('#vertify').html('获取验证码');
+			//$('#vertify').removeClass('curr');
+			$('#vertify').removeAttr('disabled');
+			clearInterval(w);
+		}
+	}, 1000);
+
+	$('#login').removeAttr('disabled');
+	$.ajax(
+	{
+	 	type: "get",
+	    async: false,
+	    url: dataUrl+"mobile/admin/sendValidateCode.do?username="+mobile,
+	    dataType: "jsonp",
+	    jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+	    jsonpCallback:"fn",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+	    success: function(data)
+	    {
+			if(data.type == "success")
+			{
+				$('#login').css("background-color","#8cbfae");
+				register();
+			}
+        }
+	});
+	//注册。
+	function register()
+	{
+		$('#login').click(function()
+		{
+			var mobile = $('#mobile').val();
+			var verifyCode = $('#verifyCode').val();
+			$('#login').attr('disabled',"disabled");
+			$.ajax({                                                  //调用jquery的ajax方法   
+		        type: "get",                                      //设置ajax方法提交数据的形式   
+		        url: dataUrl+"mobile/admin/register.do?username="+ mobile + "&password=123456&validateCode="+verifyCode,   
+		        dataType: "jsonp",
+				jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+				jsonpCallback:"fn",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+				 //输入框writer中的值作为提交的数据   
+		        success: function(data)
+		        {
+		        	if(data.type == "success")
+					{
+						//领礼品页面。
+						if(urlData.fromcode)
+						{
+							$.cookie('yiigoo', mobile,{ expires: 7 });
+							$.ajax({                                                  //调用jquery的ajax方法   
+						        type: "get",   
+						        async:false,                                    //设置ajax方法提交数据的形式   
+						        url: dataUrl+"mobile/admin/updateFromCode.do?username="+ mobile + "&fromCode="+urlData.fromcode,   
+						        dataType: "jsonp",
+								jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+								jsonpCallback:"fn",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+								 //输入框writer中的值作为提交的数据   
+						        success: function(data)
+						        {
+						        	$.cookie('yiigoo_lipin', mobile,{ expires: 7 });
+						        	window.location.href = "result.html";
+									return;
+						        },
+						        error:function(){
+						        	alert("请求数据错误。请稍后再试！");
+						        	//window.location.reload();
+						        }
+							});
+							
+						}else //领优惠券页面。
+						{
+							$.cookie('yiigoo', mobile,{ expires: 7 }); 
+							// $.cookie('yiigoo_youhuiquan', mobile,{ expires: 7 }); 
+							window.location.href = "giftVoucher.html";
+						}
+					}else if(data.type == "error")
+					{
+						switch(data.extra)
+						{
+							case "VALIDATE_INVALID" : 
+							alert("验证码过期，请重新获取！");window.location.reload(); break;
+							case "SEND_HIGH_FREQUENCY" : 
+							alert("发送过于频繁，请稍后重试！");window.location.reload(); break;
+							case "SEND_COUNT_OVER" :
+							alert("发送次数过多，请稍后重试！");window.location.reload(); break;
+							case "VALIDATE_CODE_NO_MATCHING" : 
+							alert("验证码输入错误，请重新输入！");$('#login').removeAttr('disabled');break;
+							case "USER_SAVED" : 
+							default : 
+							window.location.href = "failed.html"; break;
+						}
+					}
+		        },
+		        error:function(){
+		        	alert("请求数据错误。请稍后再试！");
+		        	window.location.reload();
+		        }
+			});
+		});
+	};
+});
+
+;$(function()
+{
+	var title = "Yiigoo壹果新上线，99元现金好礼免费大派送！",
+		desc  = "99元新人大礼包，速速戳此领取",
+		link  = "http://m.yiigoo.com/action/join/index.html",
+		imgUrl= "http://m.yiigoo.com/action/join/images/yiigoo.jpg";
+	share(title,desc,link,imgUrl);
+});
+</script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/wxshare.js"></script>
+</html>

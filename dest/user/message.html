@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="壹果Yiigoo，致力创造对婴童更呵护、更舒服、更安心安全的产品，重新定义“互联网+”专业婴童品牌。">
+    <meta name="keywords" content="壹果,yiigoo,壹果企画,壹果企画（北京）科技有限公司,母婴,婴童,爬服">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/yiigoo.css">
+	<link rel="stylesheet" type="text/css" href="../css/swiper.css">
+	<script src="../lib/swiper.min.js" type="text/javascript"></script>
+	<title>我的消息</title>
+</head>
+<body style="height:100%;">
+	<div id="yg-doc">
+		<!-- 初始化，如果没有消息，就显示提示 -->
+		<div class="nodata"  id="message_init" style="display:none;">
+       		 <p class="t">您还没有新消息哦~</p>
+     	</div>
+
+		<div class="messagebox" id="js_messagebox">
+			
+			<!--[each $extra as $message]-->
+			<article class="messagelst flex">
+				<div class="date-time">
+					<p style="width:33px"><!--[$message.createTimeString]--></p>
+				</div>
+				<div class="date-message mess" >
+					<!--1.这是前面的小箭头,内层循环第一个需要这个; 2.写上on线就没有了,说明第二层最后一个需要写上on-->
+
+					<!--[each $message.submsgs as $submsg]-->
+					<!--[if $index==0]-->
+					<i class="triangle-left"></i>
+					<!--[/if]-->
+					<div class="date-message-lst <!--[if $submsg.isRead == false]-->mess<!--[/if]--> <!--[if $index == $message.submsgs.length-1]-->on<!--[/if]-->" id="ms_<!--[$submsg.messageId]-->_<!--[$submsg.releationId]-->">
+						<h3><!--[$submsg.messageTitle]--></h3>
+						<dl class="date-message-lst-items flex">
+							<dt><img src="<!--[$submsg.imagePath]-->"></dt>
+							<dd>
+								<!--[$submsg.publishDesc]-->
+							</dd>
+						</dl>
+					</div>
+					<!--[/each]-->
+				</div>
+			</article>
+			<!--[/each]-->
+			
+			<div id="js_preloading">
+	      		  <p class="load jbc"><i></i><em>加载中</em></p>
+	     	</div>
+			
+	    </div>
+	</div>
+</body>
+<script type="text/javascript" src="../lib/fxtpl.min.js"></script>
+<script src="../lib/swiper.min.js" type="text/javascript"></script>
+<script type="text/javascript" src = "../lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src = "../js/common.js"></script>
+<script type="text/javascript" src="../js/user/user_message.js"></script>
+<script>
+	document.addEventListener('DOMContentLoaded', function(e) {
+                document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth*20/375 + 'px';
+		}, false);
+</script>
+</html>
